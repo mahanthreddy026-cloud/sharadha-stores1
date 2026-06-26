@@ -1,4 +1,4 @@
-const BASE_URL = "";
+const BASE_URL = "https://sharadha-stores1-production.up.railway.app";
 
 // Get stored token
 export function getToken() {
