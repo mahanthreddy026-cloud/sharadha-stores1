@@ -12,7 +12,17 @@ const port = process.env.PORT || 5000;
 const dbPath = path.join(__dirname, "db.json");
 const JWT_SECRET = process.env.JWT_SECRET || "dev_secret_change_me";
 
-app.use(cors());
+app.use(cors({
+  origin: [
+    "http://localhost:5173",
+    "https://sharadha-stores1-git-main-mahanthreddy026-clouds-projects.vercel.app"
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true
+}));
+
+app.options("*", cors());
 app.use(express.json());
 
 // Middleware to protect admin routes
