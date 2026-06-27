@@ -11,28 +11,8 @@ const app = express();
 const port = process.env.PORT || 5000;
 const dbPath = path.join(__dirname, "db.json");
 const JWT_SECRET = process.env.JWT_SECRET || "dev_secret_change_me";
-const allowedOrigins = [
-  "http://localhost:5173",
-  "https://sharadha-stores1-git-main-mahanthreddy026-clouds-projects.vercel.app",
-  "https://sharadha-stores1.vercel.app"
-];
 
-app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true
-}));
-
-app.options("*", cors());
-
-app.options("*", cors());
+app.use(cors());
 app.use(express.json());
 
 // Middleware to protect admin routes
